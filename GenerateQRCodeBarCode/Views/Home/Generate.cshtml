@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewData["Title"] = "Generate";
+}
+
+<h2>Generate </h2>
+
+<div class="row">
+    <div class="col-md-12">
+        <form method="post" asp-controller="Home" asp-action="Generate">
+            <input type="text" placeholder="Product Id" name="productId" value="@ViewBag.productId" />
+            <input type="submit" value="Generate" />
+        </form>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-3">
+        @if (ViewBag.productId != null)
+        {
+            <qrcode content="@ViewBag.productId" width="200" height="200"></qrcode>
+        }
+        else
+        {
+            <label>...</label>
+        }
+    </div>
+    <div class="col-md-5">
+        @if (ViewBag.productId != null)
+        {
+            <barcode content="@ViewBag.productId" width="200" height="100"></barcode>
+        }
+        else
+        {
+            <label>...</label>
+        }
+    </div>
+    <div class="col-md-4"></div>
+</div>
